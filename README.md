@@ -1,4 +1,4 @@
-# 🚚 RouteOne
+# 🚚 Lanecast
 
 ## “Never Let a Truck Run Empty”
 
@@ -6,9 +6,9 @@
 
 ## 📌 Overview
 
-RouteOne is a logistics coordination platform designed to eliminate empty truck returns by creating a real-time, high-trust matching system between **truck owners (supply)** and **shippers (demand)**.
+Lanecast is a logistics coordination platform designed to eliminate empty truck returns by creating a real-time, high-trust matching system between **truck owners (supply)** and **shippers (demand)**.
 
-Unlike traditional freight marketplaces, RouteOne focuses on:
+Unlike traditional freight marketplaces, Lanecast focuses on:
 
 - Guaranteed return loads
 - Faster matching
@@ -35,7 +35,7 @@ India’s logistics ecosystem suffers from severe inefficiencies:
 
 ## 💡 Solution
 
-RouteOne provides a **controlled logistics network** that:
+Lanecast provides a **controlled logistics network** that:
 
 - Ensures trucks always get a return load
 - Matches shipments with trucks in near real-time
@@ -219,7 +219,7 @@ Matching is based on:
 
 ## 🧩 Differentiation
 
-RouteOne focuses on:
+Lanecast focuses on:
 
 - Guaranteed return loads (core value)
 - Route-based density (not nationwide chaos)
@@ -263,7 +263,7 @@ RouteOne focuses on:
 
 ## 🏁 Long-Term Vision
 
-RouteOne becomes:
+Lanecast becomes:
 
 > The operating system for logistics coordination in India
 
@@ -973,7 +973,7 @@ Test:
 ## HIGH LEVEL REPO STRUCTURE
 
 ```text
-RouteOne/
+Lanecast/
 │
 ├── apps/
 │   ├── mobile-app/              # Flutter app
