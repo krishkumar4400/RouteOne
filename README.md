@@ -622,7 +622,7 @@ Responsibilities:
 
 ### 1. Users Table
 
-```
+```sql
 CREATE TABLE users (
     id UUID PRIMARY KEY,
     name VARCHAR(100),
@@ -636,7 +636,7 @@ CREATE TABLE users (
 
 ### 2. TRUCKS TABLE
 
-```
+```sql
 CREATE TABLE trucks (
     id UUID PRIMARY KEY,
     owner_id UUID REFERENCES users(id),
@@ -654,7 +654,7 @@ CREATE INDEX idx_truck_location ON trucks USING GIST (current_location);
 
 ### 3. LOADS TABLE
 
-```
+```sql
 CREATE TABLE loads (
     id UUID PRIMARY KEY,
     shipper_id UUID REFERENCES users(id),
@@ -674,7 +674,7 @@ CREATE INDEX idx_load_pickup ON loads USING GIST (pickup_location);
 
 ### 4. TRIPS TABLE
 
-```
+```sql
 CREATE TABLE trips (
     id UUID PRIMARY KEY,
     truck_id UUID REFERENCES trucks(id),
@@ -691,7 +691,7 @@ CREATE TABLE trips (
 
 ### 5. PAYMENTS TABLE
 
-```
+```sql
 CREATE TABLE payments (
     id UUID PRIMARY KEY,
     trip_id UUID REFERENCES trips(id),
@@ -707,7 +707,7 @@ CREATE TABLE payments (
 
 ### 6. RATINGS TABLE
 
-```
+```sql
 CREATE TABLE ratings (
     id UUID PRIMARY KEY,
     trip_id UUID REFERENCES trips(id),
@@ -721,7 +721,7 @@ CREATE TABLE ratings (
 
 ### 7. LOCATION TRACKING
 
-```
+```sql
 CREATE TABLE truck_locations (
     id BIGSERIAL PRIMARY KEY,
     truck_id UUID,
@@ -740,7 +740,7 @@ Store:
 
 Example:
 
-```
+```sql
 key: available_trucks:geo
 value: geospatial index
 ```
@@ -753,7 +753,7 @@ value: geospatial index
 
 - POST /auth/login
 
-```
+```json
 {
   "phone": "9876543210",
   "otp": "1234"
@@ -771,7 +771,7 @@ value: geospatial index
 - GET /trucks/my
 - PATCH /trucks/{id}/status
 
-```
+```json
 {
   "status": "available"
 }
@@ -779,7 +779,7 @@ value: geospatial index
 
 - PATCH /trucks/{id}/location
 
-```
+```json
 {
   "lat": 28.61,
   "lng": 77.20
@@ -790,7 +790,7 @@ value: geospatial index
 
 - POST /loads
 
-```
+```json
 {
   "pickup_lat": 28.61,
   "pickup_lng": 77.20,
@@ -813,7 +813,7 @@ value: geospatial index
 
 - POST /trips/accept
 
-```
+```json
 {
   "load_id": "...",
   "truck_id": "..."
@@ -829,7 +829,7 @@ value: geospatial index
 
 WebSocket:
 
-```
+```api
 /ws/tracking/{trip_id}
 ```
 
@@ -860,7 +860,7 @@ Events:
 
 - POST /internal/match
 
-```
+```json
 {
   "load_id": "...",
   "pickup_location": {...}
@@ -970,9 +970,9 @@ Test:
 
 ---
 
-# HIGH LEVEL REPO STRUCTURE
+## HIGH LEVEL REPO STRUCTURE
 
-```
+```text
 RouteOne/
 │
 ├── apps/
@@ -1013,42 +1013,9 @@ RouteOne/
 └── package.json
 ```
 
-📱 1. MOBILE APP STRUCTURE (Flutter)
-
-```
-mobile-app/
-│
-├── lib/
-│   ├── core/
-│   │   ├── constants/
-│   │   ├── theme/
-│   │   ├── network/
-│   │   ├── storage/
-│   │   └── utils/
-│   │
-│   ├── features/
-│   │   ├── auth/
-│   │   ├── loads/
-│   │   ├── trucks/
-│   │   ├── tracking/
-│   │   ├── trips/
-│   │   ├── payments/
-│   │   └── profile/
-│   │
-│   ├── shared/
-│   │   ├── widgets/
-│   │   ├── models/
-│   │   └── services/
-│   │
-│   └── main.dart
-│
-├── assets/
-└── pubspec.yaml
-```
-
 🌐 2. ADMIN DASHBOARD STRUCTURE (React)
 
-```
+```text
 admin-dashboard/
 │
 ├── src/
@@ -1074,7 +1041,7 @@ admin-dashboard/
 
 - Node.js + TypeScript
 
-```
+```text
 backend-api/
 │
 ├── src/
@@ -1114,7 +1081,7 @@ backend-api/
 
 Example: loads/
 
-```
+```text
 loads/
 │
 ├── controller/
@@ -1143,7 +1110,7 @@ Why this structure?
 
 👉 Separation of concerns
 
-```
+```table
 | Layer      | Responsibility |
 | ---------- | -------------- |
 | Controller | HTTP handling  |
@@ -1157,7 +1124,7 @@ Why this structure?
 
 Future high-performance service
 
-```
+```text
 matching-engine/
 │
 ├── cmd/
@@ -1183,7 +1150,7 @@ matching-engine/
 
 🧠 5. AI SERVICES STRUCTURE (Python)
 
-```
+```text
 ai-services/
 │
 ├── models/
@@ -1207,7 +1174,7 @@ ai-services/
 🗄️ 6. DATABASE STRUCTURE
 Prisma (recommended)
 
-```
+```text
 prisma/
 │
 ├── schema.prisma
@@ -1217,7 +1184,7 @@ prisma/
 
 🔄 7. EVENT SYSTEM STRUCTURE
 
-```
+```text
 events/
 │
 ├── producers/
@@ -1233,7 +1200,7 @@ TRIP_STARTED
 
 ⚡ 8. QUEUE STRUCTURE
 
-```
+```text
 queues/
 │
 ├── jobs/
@@ -1249,7 +1216,7 @@ Payment settlement
 
 🧪 9. TESTING STRUCTURE
 
-```
+```text
 tests/
 │
 ├── unit/
@@ -1260,7 +1227,7 @@ tests/
 
 🔐 10. SECURITY STRUCTURE
 
-```
+```text
 common/
 │
 ├── guards/
@@ -1271,7 +1238,7 @@ common/
 
 🐳 11. DOCKER STRUCTURE
 
-```
+```text
 infrastructure/docker/
 │
 ├── backend.Dockerfile
@@ -1284,7 +1251,7 @@ infrastructure/docker/
 
 AWS
 
-```
+```table
 | Service | Infra       |
 | ------- | ----------- |
 | Backend | ECS         |
@@ -1297,7 +1264,7 @@ AWS
 
 📊 13. OBSERVABILITY STRUCTURE
 
-```
+```path
 common/logger/
 common/metrics/
 common/tracing/
